@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>更新選択</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h2>楽曲操作システム★更新</h2>
+<p th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></p>
+<form th:action="@{/update}" method="get">
+    曲番号：<input type="text" name="id" /><br />
+    <button type="submit">更新</button>
+</form>
+<table border="1">
+    <tr>
+        <td>曲番号</td>
+        <td>曲名</td>
+        <td>歌手名</td>
+    </tr>
+    <tr th:each="music : ${list}">
+        <td th:text="${music.song_id}"></td>
+        <td th:text="${music.song_name}"></td>
+        <td th:text="${music.singer}"></td>
+    </tr>
+</table>
+</body>
+</html>
